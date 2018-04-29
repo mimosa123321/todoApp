@@ -14,8 +14,8 @@ public class Task {
     public String getDesc() { return this.desc; }
     public String getAssignee() { return this.assignee; }
     public Boolean getCompleted() { return this.completed; }
-    public void complete() {
-        this.completed = true;
+    public void isCompleted(Boolean completed) {
+        this.completed = completed;
     }
 
 }
