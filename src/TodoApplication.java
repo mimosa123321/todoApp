@@ -120,13 +120,17 @@ class MyFrame extends Frame{
         ArrayList<Task> tasks = TaskList.getTasks();
         for(int i=0; i<tasks.size(); i++) {
             Panel row = new Panel();
-            GridLayout grid = new GridLayout(1,4);
             row.setLayout(new GridLayout(1,4));
             Label id = new Label(Integer.toString(tasks.get(i).getTaskId()));
             Label desc = new Label(tasks.get(i).getDesc());
             Label completed = new Label(tasks.get(i).getCompleted().toString());
             Label assignee = new Label(tasks.get(i).getAssignee());
             Checkbox checkbox = new Checkbox( "" );
+            checkbox.addItemListener(new ItemListener() {
+                @Override public void itemStateChanged(ItemEvent e) {
+                    ((Worker)me).completeTask(Integer.parseInt(id.getText()));
+                }
+            } );
             completed.setAlignment(Label.RIGHT);
             row.add(id);
             row.add(desc);
@@ -139,7 +143,6 @@ class MyFrame extends Frame{
                     checkbox.setState(true);
                 }
             }else {
-
                 row.add(completed);
             }
             taskListP.add(row);
