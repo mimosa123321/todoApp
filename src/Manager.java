@@ -1,7 +1,10 @@
 public class Manager extends Staff {
-    public void createTask() {
+    public Manager(String staffId, String name, String role){
+        super(staffId, name, role);
+    }
+    public void createTask(String desc, String assignee) {
         int taskId = TaskList.getTasks().size() + 1;
-        Task task = new Task( taskId, "" );
+        Task task = new Task( taskId, desc, assignee);
         TaskList.add(task);
     }
 
